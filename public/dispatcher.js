@@ -18,6 +18,9 @@ var dataObject = {
   Write code that listens to the "addition" event on the EventDispatcher
   It adds 1 to the dataObject.counter property
 --------- */
+var addition = EventDispatcher.on("addition",function(){
+    dataObject.counter +=1
+  })
 
 /* TODO */
 
@@ -28,7 +31,14 @@ var dataObject = {
     If true, becomes false
     If false, becomes true
 --------- */
-
+var flick = EventDispatcher.on("flick",function(){
+    if( dataObject.switch === true){
+      dataObject.switch =false
+    }
+    else{
+      dataObject.switch = true
+    }
+  })
 /* TODO */
 
 
@@ -36,7 +46,7 @@ var dataObject = {
   Write code that listens to the "siren" event on the EventDispatcher
   It executes the dataObject.amplify function
 --------- */
-
+var siren = EventDispatcher.on("siren", function(){dataObject.amplify()})
 /* TODO */
 
 
@@ -45,7 +55,9 @@ var dataObject = {
   It changes the dataObject.amplify property to the value passed in
     via the event's parameter
 --------- */
-
+var changeAmplify = EventDispatcher.on("change-amplify",function(event){
+  dataObject.amplify = event
+})
 /* TODO */
 
 
