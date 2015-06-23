@@ -10,7 +10,9 @@ var EventDispatcher = _.clone(Backbone.Events)
 var dataObject = {
   counter: 0,
   switch: false,
-  amplify: function() {}
+  amplify: function(){
+
+  }
 }
 
 
@@ -21,6 +23,9 @@ var dataObject = {
 
 /* TODO */
 
+addition: EventDispatcher.on('addition', function(){
+      dataObject.counter += 1
+    })
 
 /* ---------
   Write code that listens to the "flick" event on the EventDispatcher
@@ -30,7 +35,14 @@ var dataObject = {
 --------- */
 
 /* TODO */
-
+flicker: EventDispatcher.on('flick', function(){
+     if (dataObject.switch === true){
+       dataObject.switch = false
+     } else {
+      dataObject.switch  = true
+     }
+   
+    })
 
 /* ---------
   Write code that listens to the "siren" event on the EventDispatcher
@@ -39,6 +51,9 @@ var dataObject = {
 
 /* TODO */
 
+siren: EventDispatcher.on('siren', function(){
+      dataObject.amplify();
+    })
 
 /* ---------
   Write code that listens to the "change-amplify" event on the EventDispatcher
@@ -48,4 +63,7 @@ var dataObject = {
 
 /* TODO */
 
+changeAmplify: EventDispatcher.on('change-amplify', function(value){
+      dataObject.amplify = value 
+    })
 
