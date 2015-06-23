@@ -50,8 +50,6 @@ var Task = Backbone.Model.extend({
   */
   update: function(name, value) {
     this.set({task: name, value: value})
-    console.log(this.attributes)
-
   }
 
 })
