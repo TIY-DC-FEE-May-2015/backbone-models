@@ -19,7 +19,9 @@ var dataObject = {
   It adds 1 to the dataObject.counter property
 --------- */
 
-/* TODO */
+EventDispatcher.on("addition", function(){
+   this.counter += 1
+}, dataObject)
 
 
 /* ---------
@@ -29,7 +31,12 @@ var dataObject = {
     If false, becomes true
 --------- */
 
-/* TODO */
+EventDispatcher.on("flick", function(){
+  if (this.switch === true) {
+    return this.switch = false
+  }
+  return this.switch = true
+}, dataObject)
 
 
 /* ---------
@@ -37,7 +44,9 @@ var dataObject = {
   It executes the dataObject.amplify function
 --------- */
 
-/* TODO */
+EventDispatcher.on("siren", function(){
+  this.amplify()
+}, dataObject)
 
 
 /* ---------
@@ -46,6 +55,8 @@ var dataObject = {
     via the event's parameter
 --------- */
 
-/* TODO */
+EventDispatcher.on("change-amplify", function(WyldStallyns){
+  dataObject.amplify = WyldStallyns
+})
 
 
