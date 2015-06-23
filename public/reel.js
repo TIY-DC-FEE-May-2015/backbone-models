@@ -10,7 +10,8 @@ var Reel = Backbone.Model.extend({
       - the "blankRate" property to .5
   */
   defaults: {
-
+    symbols: ["Cherry", "Plum", "Lemon", "Orange", "Grape", "Melon"],
+    blankRate: .5,
   },
 
   /*
@@ -23,7 +24,7 @@ var Reel = Backbone.Model.extend({
       - "stop": execute this.stopSpinning()
   */
   initialize: function(attributes) {
-
+    this.set({spinning: false, result: ""})
   },
 
   /*
