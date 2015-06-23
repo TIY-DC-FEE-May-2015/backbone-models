@@ -10,7 +10,8 @@ var Reel = Backbone.Model.extend({
       - the "blankRate" property to .5
   */
   defaults: {
-
+    symbols: ["Cherry", "Plum", "Lemon", "Orange", "Grape", "Melon"],
+    blankRate: .5,
   },
 
   /*
@@ -23,14 +24,21 @@ var Reel = Backbone.Model.extend({
       - "stop": execute this.stopSpinning()
   */
   initialize: function(attributes) {
-
+    this.spinning = false
+    this.result = ""
+    this.on("spin", function(){
+      this.spin()
+    })
+    this.on("stop", function(){
+      this.stopSpinning()
+    })
   },
 
   /*
     Set the "spinning" property of this model to true.
   */
   spin: function() {
-
+    this.spinning = true
   },
 
   /*
@@ -41,7 +49,9 @@ var Reel = Backbone.Model.extend({
     Trigger the "stopped" event on this model.
   */
   stopSpinning: function() {
-
+    this.spinning = false
+    this.result = this.getResult()
+    this.trigger("stopped", this)
   },
 
   /*
@@ -53,7 +63,12 @@ var Reel = Backbone.Model.extend({
     Otherwise, return a random item from the symbols attribute.
   */
   getResult: function() {
-
+    if (Math.random()<this.get("blankRate")) {
+      return ""
+    }
+    var symbol = this.get("symbols")
+    var i = Math.floor(Math.random()*6)
+    return symbol[i]
   },
 
   /*
@@ -62,7 +77,10 @@ var Reel = Backbone.Model.extend({
     Otherwise, return the "result" property of this model.
   */
   display: function() {
-
+    if (this.spinning === true) {
+      return false
+    }
+    return this.result
   }
 
 })
