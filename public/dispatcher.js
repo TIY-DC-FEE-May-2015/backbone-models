@@ -20,6 +20,9 @@ var dataObject = {
 --------- */
 
 /* TODO */
+EventDispatcher.on('addition', function() {
+  dataObject.counter += 1;
+})
 
 
 /* ---------
@@ -30,7 +33,14 @@ var dataObject = {
 --------- */
 
 /* TODO */
-
+EventDispatcher.on('flick', function() {
+  var current = dataObject.switch;
+  if (current) {
+    dataObject.switch = false;
+  } else {
+    dataObject.switch = true;
+  }
+})
 
 /* ---------
   Write code that listens to the "siren" event on the EventDispatcher
@@ -38,7 +48,9 @@ var dataObject = {
 --------- */
 
 /* TODO */
-
+EventDispatcher.on('siren', function() {
+  dataObject.amplify();
+})
 
 /* ---------
   Write code that listens to the "change-amplify" event on the EventDispatcher
@@ -47,5 +59,7 @@ var dataObject = {
 --------- */
 
 /* TODO */
-
+EventDispatcher.on('change-amplify', function(param) {
+  dataObject.amplify = param;
+})
 

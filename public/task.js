@@ -11,7 +11,9 @@ var Task = Backbone.Model.extend({
       - the "complete" property to false
   */
   defaults: {
-
+    task: "Unknown",
+    value: 0,
+    complete: false
   },
 
   /* 
@@ -19,7 +21,11 @@ var Task = Backbone.Model.extend({
     Otherwise, returns false.
   */
   completed: function() {
-
+    var taskStatus = this.get('complete');
+    if (taskStatus) {
+      return true;
+    }
+    return false;
   },
 
   /* 
@@ -29,7 +35,12 @@ var Task = Backbone.Model.extend({
     Doesn't need to return anything.
   */
   check: function() {
-
+    var taskStatus = this.get('complete');
+    if (taskStatus) {
+      this.set('complete', false)
+    } else {
+      this.set('complete', true)
+    }
   },
 
   /*
@@ -38,7 +49,8 @@ var Task = Backbone.Model.extend({
     Doesn't need to return anything.
   */
   update: function(name, value) {
-
+    this.set('task', name);
+    this.set('value', value);
   }
 
 })
