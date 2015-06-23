@@ -12,7 +12,7 @@ var Task = Backbone.Model.extend({
   */
   defaults: {
     "task": "Unknown",
-    "value": 0,
+    "value": 0, 
     "complete": false
 
   },
